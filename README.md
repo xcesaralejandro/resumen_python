@@ -1,1 +1,1 @@
-# resumenpython
+# Resumenes generados en mi intento de aprender python :)
