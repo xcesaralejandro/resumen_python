@@ -139,3 +139,31 @@ miBici.arrancar()
 miBici.estado()
 #Comprobar si una clase es parte de otra. ARGS(mi objeto, clase a comprobar)
 print("Mi bici utiliza la clase vehiculo (Herencia):", isinstance(miBici, Vehiculo))
+
+
+# POLIMORFISMO
+# Es la habilidad que tienen los objetos de diferentes clases para responder a metodos con el mismo nombre
+# sin importar el tipo del objeto.
+
+class Coche():
+    def desplazamiento(self):
+        print("Me desplazo con 4 ruedas")
+
+class Moto():
+    def desplazamiento(self):
+        print("Me desplazo con 2 ruedas")
+
+class Camion():
+    def desplazamiento(self):
+        print("Me desplazo con 6 ruedas")
+
+def funcionamiento(objeto):
+    objeto.desplazamiento()
+
+miMoto = Moto()
+miCamion = Camion()
+miCoche = Coche()
+
+funcionamiento(miMoto)
+funcionamiento(miCamion)
+funcionamiento(miCoche)
