@@ -14,6 +14,14 @@
 # poseer metodos para la comunicación de resultados finales, sin exponer la forma en que trabaja y sin generar dependencia de
 # metodos de otras clases.
 
+
+# PRINCIPIO DE SUSTITUCIÓN
+# El principio de sustitución quiere decir "es siempre un/a" es decir, dada la clase empleado que hereda
+# de persona, un empleado es siempre una persona, pero una persona no necesariamente es un empleado
+# ya que podria estar en otra situación. Este concepto nos ayudará a determinar y asegurarnos que la herencia
+# implementada es realmente correcta, ya que si la clase "padre" es siempre el "hijo", entonces 
+# el diseño de clases estaria incorrecto. 
+
 # CREAR UNA CLASE
 class Auto ():
     # CONSTRUCTOR
@@ -51,3 +59,83 @@ miAuto = Auto()
 # Acceder a las propiedades / metodos
 print(miAuto.prender(True))
 miAuto.informacion()
+
+print("\n")
+
+class Vehiculo():
+    def __init__(self, marca, modelo):
+        self.marca = marca
+        self.modelo = modelo 
+        self.enmarcha = False
+        self.acelera = False
+        self.frena = False
+
+    def arrancar(self):
+        self.enmarcha = True
+    
+    def acelerar(self):
+        self.acelera = True
+    
+    def frenar(self):
+        self.frena = True
+
+    def estado(self):
+        print("\n Marca:", self.marca, "\n","Modelo:", self.modelo,"\n","En marcha:",self.enmarcha,"\n","Acelera:",
+              self.acelera,"\n","Frena:",self.frena)
+
+# HERENCIA
+class Moto(Vehiculo):
+    haciendo_caballito = ""
+    def caballito(self):
+        self.haciendo_caballito = "Voy haciendo caballito"
+    
+    #SOBRESCRITURA DE METODOS
+    def estado (self):
+        # OBS: Recordar que siempre antes de sobrescribir el metodo se puede ejecutar el original (metodo el del padre) si es necesario
+        Vehiculo.estado(self)
+        print(" Caballito:", self.haciendo_caballito)
+
+#miMoto = Moto("Honda","CBR")
+#miMoto.caballito()
+#miMoto.estado()
+
+class Furgoneta(Vehiculo):
+    def carga(self,cargado):
+        self.cargado = cargado
+        if self.cargado:
+            return "La furgoneta está cargada."
+        else:
+            return "La furgoneta no está cargada."
+
+#mifurgoneta = Furgoneta("Renault", "Kangoo")
+#mifurgoneta.arrancar()
+#mifurgoneta.estado()
+
+class VElectrico():
+    def __init__(self):
+        self.autonomia = 100
+    
+    def cargarEnergia(self):
+        self.cargando = True
+
+# MULTIPLE HERENCIA
+# En caso de metodos con el mismo nombre primará el de la clase que se encuentre más a la izquierda.
+# Como el constructor igual es un metodo, en este caso se utilizará el constructor de la clase VElectrico,
+# y como esta clase no recibe argumentos, la instancia de BicicletaElectrica no debe recibir argumentos.
+
+class BicicletaElectrica(VElectrico, Vehiculo):
+    # Si solo tuviera una herencia se podria trabajar el constructor padre de la siguiente forma
+    # super().__init__(argumentos)
+    def __init__(self, color):
+        Vehiculo.__init__(self,"bicicleta","mc2000")
+        self.color = color
+
+    def estado (self):
+        Vehiculo.estado(self)
+        print("Color:",self.color)
+
+miBici = BicicletaElectrica("roja")
+miBici.arrancar()
+miBici.estado()
+#Comprobar si una clase es parte de otra. ARGS(mi objeto, clase a comprobar)
+print("Mi bici utiliza la clase vehiculo (Herencia):", isinstance(miBici, Vehiculo))
