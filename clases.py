@@ -145,6 +145,14 @@ print("Mi bici utiliza la clase vehiculo (Herencia):", isinstance(miBici, Vehicu
 # Es la habilidad que tienen los objetos de diferentes clases para responder a metodos con el mismo nombre
 # sin importar el tipo del objeto.
 
+# Esta definición de POO es solo para refrescar conceptos :), python no cuenta con sobrecarga de metodos, java si.
+# Inicialmente se entiende que Sobrecarga (Diferente a sobreescritura) hace referencia a un conjunto de Métodos 
+# con el mismo Nombre pero diferente Número de Parámetros y/o Tipos de estos, además que estos Métodos se encuentran 
+# definidos en una misma Clase. En tanto que Polimorfismo hace referencia a un conjunto de Métodos con el mismo Nombre 
+# e igual Número de Parámetros y Tipos, pero que se encuentran definidos en diferentes Clases.
+
+
+
 class Coche():
     def desplazamiento(self):
         print("Me desplazo con 4 ruedas")
