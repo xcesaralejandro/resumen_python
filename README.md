@@ -1,1 +1,1 @@
-# Resumenes generados en mi intento de aprender python :)
+# Resumenes generados para aprender y recordar python :)
